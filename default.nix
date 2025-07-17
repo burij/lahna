@@ -43,14 +43,14 @@ let
     pname = "lahna";
     version = "0.0.1";
 
-    src = ./.;
+    # src = ./.;
 
-    # src = pkgs.fetchFromGitHub {
-    #   owner = "burij";
-    #   repo = "nixos-extended-rebuilder";
-    #   rev = "0.9.4";
-    #   sha256 = "sha256-08746k51Os8F8q86/mqGFHvUgWOYli6q/98xqmrhVUY=";
-    # };
+    src = pkgs.fetchFromGitHub {
+      owner = "burij";
+      repo = "lahna";
+      rev = "0.0.1";
+      sha256 = "";
+    };
 
     extraFile = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/burij/"
