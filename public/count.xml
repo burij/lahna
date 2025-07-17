@@ -1,0 +1,19 @@
+<div>
+  <div id="demo(2)">
+    > You entered $USERINPUT in the form. Your input was processed as a string.
+    Function M.countletters calculated that $USERINPUT has $VALUE letters.
+    <p></p>
+    > Building APIs, template systems, and design components with Lahna is very
+    easy and a lot of fun. For most use cases, you probably only need to modify
+    ./modules/router.lua
+    <p></p>
+    > Define endpoints in M.get, M.post, or M.delete (depending on the desired
+    request method), then write custom functions to define the action for that
+    request. That's it. router.lua contains examples.
+    <p></p>
+    > ./modules/utils.lua contains some helpful functions for string
+    manipulation you might need in web development, like parsing Markdown to
+    HTML. You can see it in action by rendering README.md of this project
+    directly to the frontend. It contains more in-depth documentation.
+  </div>
+</div>

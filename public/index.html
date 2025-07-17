@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahna</title>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.sand.min.css">
+    <script src="https://unpkg.com/htmx.org@2.0.6"></script>
+
+    <style>
+      :root, :host {--pico-font-size: 100%;}
+      body {font-family: Helvetica, Arial, sans-serif;}
+      h1, h2, h3, h4, h5, h6 {font-family: Helvetica, Arial, sans-serif;}
+      button {margin-right: 1vw;}
+      .content {min-height: 60vh}
+      .air {padding-top: 5vh;}
+    </style></head>
+
+  <body><main class="container"><hr>
+
+    <h1>👷‍♀️
+      <a class="logo" href="javascript:void(0);" onclick="location.reload();">
+        Lahna ///</a></h1>
+
+    <small id="slogan">
+      / building understandable web</small><hr>
+
+    <div class="content" id="content"><p>
+      Imagine you need or want to create a simple, but dynamic web application
+      and it doesn't automatically mean installing 201 Node.js dependencies or
+      accepting a subscription with a $25 monthly fee.</p><p>
+
+      HTMX made an immense and fairly underrated contribution to solving this
+      problem. But there's still an open question regarding a suitable back-end
+      solution.</p><p>
+
+      Usually you'll get the recommendation to use Django, Flask, or write the
+      back-end in Go. But I would like to write my application logic in Lua.
+      It's a great, simple, and readable prototyping language. There might be
+      better solutions for production, but not many for a quick working draft
+      that can be understood by other team members.</p><p>
+
+      HPLN was the first attempt at HTMX on the front-end and Lua
+      on the back-end. Generating HTML by having nginx execute Lua scripts felt
+      natural at first. A look at the default.nix of this project will reveal
+      quite some duct taping that was necessary to make it work.</p><p>
+
+      So Lahna is just the next step in simplification. It's a web server
+      written in Lua with just a couple of dependencies by default.</p>
+
+    <br>
+      <button hx-get="/xml/demo" hx-target="#content">
+        Launch demo 🧨</button>
+
+      <a href="#" hx-get="/how" hx-target="#how"
+        class="text-sm font-semibold text-gray-900">
+        Get code <span aria-hidden="true">&rarr;</span></a></div>
+
+    <div class="air"></div><hr><small><div class="footnote"></div>
+      This website isn’t commercial, and it doesn’t use cookies or analytic
+      tools.
+      <a href="#" hx-get="/privacy" hx-target="#privacy">
+        Click here for more information about the privacy policy.</a></small>
+      <br><br><div id="privacy"></div>
+
+    </main></body>
+</html>
+
+
