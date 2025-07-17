@@ -49,7 +49,7 @@ let
       owner = "burij";
       repo = "lahna";
       rev = "0.0.1";
-      sha256 = "";
+      sha256 = "sha256-q0prq0qm/PAvQLsCqkI8lZis/8mHs6tdhXWQIvcSRNI=";
     };
 
     extraFile = pkgs.fetchurl {
