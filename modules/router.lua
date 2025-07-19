@@ -13,6 +13,10 @@ function M.get(path, headers)
         result = M.init_demo(headers)
         status = "200"
     end
+    if x:match( "^/mdtest/?$" ) then
+        result = M.mdtest(headers)
+        status = "200"
+    end
     if x:match( "^/xml/" ) then
         result = M.get_xml(headers, x)
         status = "200"
@@ -89,6 +93,15 @@ function M.init_demo(headers)
     local utils = require "modules.utils"
     local path = _G.public_user_folder .. "demo.xml"
     local result = utils.read_file(path) or ""
+    return result
+end
+
+--------------------------------------------------------------------------------
+
+function M.mdtest(headers)
+    headers:upsert("content-type", "text/html")
+    local utils = require "modules.utils"
+    local result = utils.md_to_html("## success") or "empty"
     return result
 end
 

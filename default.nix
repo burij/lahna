@@ -61,7 +61,6 @@ let
 
     nativeBuildInputs = [ pkgs.makeWrapper ];
     buildInputs = [ luaEnv dependencies ];
-    propagatedBuildInputs = [ luaEnv dependencies ];
 
     installPhase = ''
       mkdir -p $out/bin
@@ -74,7 +73,8 @@ let
       makeWrapper ${luaEnv}/bin/lua $out/bin/$pname \
         --add-flags "$out/lib/$pname/main.lua" \
         --set LUA_PATH "$out/lib/$pname/?.lua;$out/lib/$pname/?/init.lua;" \
-        --set LUA_CPATH "${luaEnv}/lib/lua/${luaEnv.lua.luaversion}/?.so"
+        --set LUA_CPATH "${luaEnv}/lib/lua/${luaEnv.lua.luaversion}/?.so" \
+        --prefix PATH : ${pkgs.pandoc}/bin
 
       # Additional custom wrapper
       cat > $out/bin/$pname-extra <<EOF

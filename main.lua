@@ -6,7 +6,7 @@ local load_conf = loadfile(arg[1] or "./conf.lua")
 local succes, conf = pcall(load_conf)
 if not succes then conf = require "conf" end
 
-conf.version = "Lahna: Luaserver for HTMX on NixOS, Version 0.0.1"
+conf.version = "Lahna: Luaserver for HTMX on NixOS, Version 0.0.2"
 conf.arguments = arg
 
 _G.debug_mode = true

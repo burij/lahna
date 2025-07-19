@@ -1,5 +1,5 @@
 <div>
-  <div id="demo(2)">
+  <div id="demo2">
     > You entered $USERINPUT in the form. Your input was processed as a string.
     Function M.countletters calculated that $USERINPUT has $VALUE letters.
     <p></p>
@@ -13,7 +13,8 @@
     <p></p>
     > ./modules/utils.lua contains some helpful functions for string
     manipulation you might need in web development, like parsing Markdown to
-    HTML. You can see it in action by rendering README.md of this project
-    directly to the frontend. It contains more in-depth documentation.
+    HTML. You can see it in action by <a href="#" hx-get="/mdtest" hx-target="#demo2">
+    rendering README.md</a> of this project directly to the frontend. It
+    contains more in-depth documentation.
   </div>
 </div>
