@@ -21,7 +21,7 @@ function M.create_server(host, port)
     local settings = {host = x, port = y, onstream = M.handle_request}
     local result = http_server.listen(settings)
     if not result then
-        print("Error: Could not bind to " .. x .. ":" .. y)
+        print("💥 Error: Could not bind to " .. x .. ":" .. y)
     else
         print("📍 Server running at http://" .. x .. ":" .. y)
     end

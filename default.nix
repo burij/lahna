@@ -12,6 +12,7 @@ let
   dependencies = with pkgs; [
     wget
     nixpkgs-fmt
+    pandoc
   ];
 
   shell = pkgs.mkShell {

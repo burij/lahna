@@ -14,6 +14,29 @@ end
 
 --------------------------------------------------------------------------------
 
+function M.md_to_html(markdown)
+    local x = is_string(markdown or "")
+
+    local clean_md = string.gsub(x, "'", "'\"'\"'") -- escape single quotes
+    local pandoc_cmd = "echo '" .. clean_md .. "' | pandoc -f markdown -t html"
+    local handle = io.popen(pandoc_cmd)
+
+    local result = "Could not execute pandoc command"
+    if not handle then
+        return is_string(result)
+    end
+
+    local result = handle:read("*a")
+    local success = handle:close()
+    if not success then
+        result = "Pandoc conversion failed, Pandoc installed?"
+    end
+
+    return is_string(result)
+end
+
+--------------------------------------------------------------------------------
+
 function M.parse_form(body)
     if not body then return {} end
 
@@ -74,6 +97,7 @@ function M.replace(text, variable, value)
         return result
     end
 end
+
 
 --------------------------------------------------------------------------------
 return M
