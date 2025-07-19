@@ -13,7 +13,7 @@
     <p></p>
     > ./modules/utils.lua contains some helpful functions for string
     manipulation you might need in web development, like parsing Markdown to
-    HTML. You can see it in action by <a href="#" hx-get="/mdtest" hx-target="#demo2">
+    HTML. You can see it in action by <a href="#" hx-get="/mdtest" hx-target="#demo">
     rendering README.md</a> of this project directly to the frontend. It
     contains more in-depth documentation.
   </div>

@@ -4,6 +4,9 @@ let
   nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-25.05";
   pkgs = import nixpkgs { config = { }; overlays = [ ]; };
 
+  appName = "lahna";
+  appVersion = "0.0.2";
+
   luaEnv = pkgs.lua5_4.withPackages (ps: with ps; [
     luarocks
     http
@@ -41,15 +44,15 @@ let
   };
 
   package = pkgs.stdenv.mkDerivation {
-    pname = "lahna";
-    version = "0.0.2";
+    pname = appName;
+    version = appVersion;
 
     # src = ./.;
 
     src = pkgs.fetchFromGitHub {
       owner = "burij";
-      repo = "lahna";
-      rev = "0.0.2";
+      repo = appName;
+      rev = appVersion;
       sha256 = "sha256-/xvakXYTv79awenyUm+R17HsGv9+8au/8C+ONgnf4UU=";
     };
 
