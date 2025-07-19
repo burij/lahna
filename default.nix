@@ -42,15 +42,15 @@ let
 
   package = pkgs.stdenv.mkDerivation {
     pname = "lahna";
-    version = "0.0.1";
+    version = "0.0.2";
 
     # src = ./.;
 
     src = pkgs.fetchFromGitHub {
       owner = "burij";
       repo = "lahna";
-      rev = "0.0.1";
-      sha256 = "sha256-q0prq0qm/PAvQLsCqkI8lZis/8mHs6tdhXWQIvcSRNI=";
+      rev = "0.0.2";
+      sha256 = "sha256-/xvakXYTv79awenyUm+R17HsGv9+8au/8C+ONgnf4UU=";
     };
 
     extraFile = pkgs.fetchurl {
