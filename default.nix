@@ -17,7 +17,6 @@ let
 
   shell = pkgs.mkShell {
     buildInputs = [ luaEnv dependencies ];
-    propagatedBuildInputs = [ luaEnv dependencies ];
     shellHook = ''
       # export LUAOS="./conf.lua"
       alias run='lua main.lua'
@@ -62,6 +61,7 @@ let
 
     nativeBuildInputs = [ pkgs.makeWrapper ];
     buildInputs = [ luaEnv dependencies ];
+    propagatedBuildInputs = [ luaEnv dependencies ];
 
     installPhase = ''
       mkdir -p $out/bin
