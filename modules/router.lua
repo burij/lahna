@@ -107,8 +107,11 @@ function M.countletters(userdata)
         end
     end
     local template = utils.read_file(_G.public_user_folder .. "count.xml")
-    pre_result = utils.replace(template, "$USERINPUT", data)
-    result = utils.replace(pre_result, "$VALUE", tostring(count))
+    local replacements = {
+        ["$USERINPUT"] = data,
+        ["$VALUE"] = tostring(count)
+    }
+    result = utils.process_template(template, replacements)
     return is_string(result)
 end
 
