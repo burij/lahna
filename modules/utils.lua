@@ -98,6 +98,30 @@ function M.replace(text, variable, value)
     end
 end
 
+--------------------------------------------------------------------------------
+
+function M.get_parent(folder)
+    local x = is_path(folder)
+    local result = nil
+
+    if not x or x == "" then result = nil
+    elseif x:match("^[/\\]+$") then result = "/"
+    elseif x:match("^%a:[/\\]*$") then
+        -- Handle Windows drive root (e.g., "C:" or "C:\")
+        local drive_letter = x:match("^(%a:)")
+        result = drive_letter .. "\\"
+    else
+        local clean_path = x:gsub("[/\\]+$", "")
+        if clean_path == "" then result = "/"
+        else
+            local parent = clean_path:match("^(.+)[/\\][^/\\]*$")
+            if not parent then result = "."
+            elseif parent == "" then result = "/"
+            else result = parent end
+        end
+    end
+    return is_path(result)
+end
 
 --------------------------------------------------------------------------------
 return M

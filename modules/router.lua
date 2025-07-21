@@ -5,21 +5,25 @@ local M = {}
 function M.get(path, headers)
     local x = is_string(path)
     local result, status = "", "404"
+
     if x:match( "^/demo/?$" ) then
         headers:upsert("content-type", "text/html")
         result = M.init_demo()
         status = "200"
     end
-    if x:match( "^/mdtest/?$" ) then
+
+    if x:match( "^/readme/?$" ) then
         headers:upsert("content-type", "text/html")
-        result = M.mdtest()
+        result = M.readme()
         status = "200"
     end
+
     if x:match( "^/xml/" ) then
         headers:upsert("content-type", "text/html")
         result = M.get_xml(x)
         status = "200"
     end
+
     return result, status
 end
 
@@ -69,15 +73,18 @@ end
 
 --------------------------------------------------------------------------------
 
-function M.mdtest()
+function M.readme()
     local utils = require "modules.utils"
-    local result = utils.md_to_html("## success") or "empty"
+    local path = utils.get_parent(_G.public_user_folder) .. "/README.md"
+    if debug_mode then print("Trying to get content of " .. path) end
+    local readme = utils.read_file(path)
+    local result = utils.md_to_html(readme) or "empty"
     return is_string(result)
 end
 
 --------------------------------------------------------------------------------
 
-function M.get_xml(headers, path)
+function M.get_xml(path)
     local x = is_string(path)
     local utils = require "modules.utils"
     local filename = string.match(x, "([^/]+)$") .. ".xml"
