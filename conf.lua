@@ -1,4 +1,4 @@
-local conf = {}
+local conf = {debug_mode = true}
 
 conf.port = 8000
 conf.host = "localhost" -- to share on network: "0.0.0.0"
