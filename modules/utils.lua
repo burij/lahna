@@ -100,6 +100,20 @@ end
 
 --------------------------------------------------------------------------------
 
+function M.process_template(template, variable_set)
+    local x = is_string(template)
+    local y = is_dictionary(variable_set)
+    local result = x
+    for k, v in pairs(y) do
+        if string.find(result, k, 1, true) then
+            result = string.gsub(result, k, v)
+        end
+    end
+    return is_string(result)
+end
+
+--------------------------------------------------------------------------------
+
 function M.get_parent(folder)
     local x = is_path(folder)
     local result = nil
