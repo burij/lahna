@@ -31,20 +31,29 @@
       and it doesn't automatically mean installing 201 Node.js dependencies or
       accepting a subscription with a $25 monthly fee.</p><p>
 
-      HTMX made an immense and fairly underrated contribution to solving this
-      problem. But there's still an open question regarding a suitable back-end
-      solution.</p><p>
+      <a href="https://htmx.org/" target="_blank">HTMX</a> made an immense and
+      fairly underrated contribution to solving this problem. But there's still
+      an open question regarding a suitable back-end solution.</p><p>
 
-      Usually you'll get the recommendation to use Django, Flask, or write the
-      back-end in Go. But I would like to write my application logic in Lua.
+      Usually you'll get the recommendation to use
+      <a href="https://www.djangoproject.com/" target="_blank" >Django,</a>
+      <a href="https://flask.palletsprojects.com" target="_blank" >Flask,</a>
+      or write the back-end in
+      <a href="https://go.dev/" target="_blank" >Go</a>. But I would like to
+      write my application logic in
+      <a href="https://lua.org/" target="_blank" >Lua</a>.
       It's a great, simple, and readable prototyping language. There might be
       better solutions for production, but not many for a quick working draft
       that can be understood by other team members.</p><p>
 
-      HPLN was the first attempt at HTMX on the front-end and Lua
+      <a href="https://hpln.burij.de/" target="_blank" >HPLN</a> was the first
+      attempt at HTMX on the front-end and Lua
       on the back-end. Generating HTML by having nginx execute Lua scripts felt
-      natural at first. A look at the default.nix of this project will reveal
-      quite some duct taping that was necessary to make it work.</p><p>
+      natural at first. A look at the
+      <a href="https://github.com/burij/hpln/blob/main/default.nix"
+        target="_blank" >default.nix</a>
+      of this project will reveal quite some duct taping that was necessary to
+      make it work.</p><p>
 
       So Lahna is just the next step in simplification. It's a web server
       written in Lua with just a couple of dependencies by default.</p>
@@ -53,7 +62,8 @@
       <button hx-get="/xml/demo" hx-target="#content">
         Launch demo 🧨</button>
 
-      <a href="#" hx-get="/how" hx-target="#how"
+      <a href="https://github.com/burij/lahna"
+        target="_blank"
         class="text-sm font-semibold text-gray-900">
         Get code <span aria-hidden="true">&rarr;</span></a></div>
 
