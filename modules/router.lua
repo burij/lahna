@@ -24,6 +24,12 @@ function M.get(path, headers)
         status = "200"
     end
 
+    if x:match( "^/md/" ) then
+        headers:upsert("content-type", "text/html")
+        result = M.get_md(x)
+        status = "200"
+    end
+
     return result, status
 end
 
@@ -90,6 +96,18 @@ function M.get_xml(path)
     local filename = string.match(x, "([^/]+)$") .. ".xml"
     local path = _G.public_user_folder .. filename
     local result = utils.read_file(path) or ""
+    return is_string(result)
+end
+
+--------------------------------------------------------------------------------
+
+function M.get_md(path)
+    local x = is_string(path)
+    local utils = require "modules.utils"
+    local filename = string.match(x, "([^/]+)$") .. ".md"
+    local path = _G.public_user_folder .. filename
+    local markdown = utils.read_file(path) or ""
+    local result = utils.md_to_html(markdown) or markdown
     return is_string(result)
 end
 
