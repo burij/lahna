@@ -13,5 +13,5 @@ conf.arguments = arg
 _G.debug_mode = conf.debug_mode or true
 _G.public_user_folder = conf.path
 
-if debug_mode then test.prestart() end
+if debug_mode then test.prestart(conf) end
 app.run(conf)
