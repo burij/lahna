@@ -24,7 +24,7 @@ let
       # export LUAOS="./conf.lua"
       alias run='lua main.lua'
       alias lahna='./result/bin/lahna'
-      alias build ='nix-build -A package'
+      alias build='nix-build -A package'
       alias make='rm result;git add .;build;git commit -m '
       mkdir modules
 
