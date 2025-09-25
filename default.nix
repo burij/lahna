@@ -30,12 +30,6 @@ let
 
       cp ${pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/burij/"
-          +"lua-light-wings/refs/heads/main/modules/need.lua";
-        sha256 = "sha256-w6ie/GiCiMywXgVmDg6WtUsTFa810DTGo1jAHV5pi/A=";
-      }} ./need.lua
-
-      cp ${pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/burij/"
           +"lua-light-wings/refs/tags/v.0.2.2/modules/lua-light-wings.lua";
         sha256 = "sha256-mRD1V0ERFi4gmE/VfAnd1ujoyoxlA0vCj9fJNSCtPkw=";
       }} ./modules/lua-light-wings.lua
