@@ -16,9 +16,9 @@ _G.public_user_folder = conf.path
 if debug_mode then test.prestart(conf) end
 app.run(conf)
 
--- TODO: Replace Lua with LuaJit
+-- Replaced Lua with LuaJit
 -- TODO: Add utils.write_file
 -- TODO: Add utils.sanitize
 -- TODO: Update to the new version of lua-light-wings
 -- TODO: Remove need
--- Changelog 0.9:
+

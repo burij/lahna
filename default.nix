@@ -7,7 +7,7 @@ let
   appName = "lahna";
   appVersion = "0.1";
 
-  luaEnv = pkgs.lua5_4.withPackages (ps: with ps; [
+  luaEnv = pkgs.luajit.withPackages (ps: with ps; [
     luarocks
     http
   ]);
@@ -30,8 +30,8 @@ let
 
       cp ${pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/burij/"
-          +"lua-light-wings/refs/tags/v.0.2.2/modules/lua-light-wings.lua";
-        sha256 = "sha256-mRD1V0ERFi4gmE/VfAnd1ujoyoxlA0vCj9fJNSCtPkw=";
+          +"lua-light-wings/refs/tags/v.0.3.1/modules/lua-light-wings.lua";
+        sha256 = "sha256-3RBZDxmSOXNJ+rpBG/VmXSajTRsvVU2y8zKsxqDw4JA=";
       }} ./modules/lua-light-wings.lua
 
       nixpkgs-fmt default.nix
@@ -53,8 +53,8 @@ let
 
     extraFile = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/burij/"
-        + "lua-light-wings/refs/tags/v.0.2.2/modules/lua-light-wings.lua";
-      sha256 = "sha256-mRD1V0ERFi4gmE/VfAnd1ujoyoxlA0vCj9fJNSCtPkw=";
+        + "lua-light-wings/refs/tags/v.0.3.1/modules/lua-light-wings.lua";
+      sha256 = "sha256-3RBZDxmSOXNJ+rpBG/VmXSajTRsvVU2y8zKsxqDw4JA=";
     };
 
     nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -68,7 +68,7 @@ let
       cp $extraFile $out/lib/$pname/lua-light-wings.lua
 
       makeWrapper ${luaEnv}/bin/luarocks $out/bin/luarocks
-      makeWrapper ${luaEnv}/bin/lua $out/bin/$pname \
+      makeWrapper ${luaEnv}/bin/luajit $out/bin/$pname \
         --add-flags "$out/lib/$pname/main.lua" \
         --set LUA_PATH "$out/lib/$pname/?.lua;$out/lib/$pname/?/init.lua;" \
         --set LUA_CPATH "${luaEnv}/lib/lua/${luaEnv.lua.luaversion}/?.so" \
