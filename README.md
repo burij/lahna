@@ -54,7 +54,7 @@ The `modules/utils.lua` file provides handy utilities for:
 - Checking if files exist
 - Converting Markdown to HTML (requires Pandoc)
 - Parsing form data from POST requests
-- Reading files
+- Reading and writing files
 - Simple template processing (see `process_template`)
 - Path manipulation
 

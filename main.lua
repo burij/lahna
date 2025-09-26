@@ -17,8 +17,8 @@ if debug_mode then test.prestart(conf) end
 app.run(conf)
 
 -- Replaced Lua with LuaJit
--- TODO: Add utils.write_file
+-- Added utils.write_file
 -- TODO: Add utils.sanitize
 -- TODO: Update to the new version of lua-light-wings
 -- TODO: Remove need
-
+-- TODO: change README

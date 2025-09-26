@@ -1,4 +1,19 @@
 local M = {}
+
+--------------------------------------------------------------------------------
+
+function M.write_file(filename, content)
+    local x = is_string(filename)
+    local y = is_string(content)
+    local file = io.open(x, "w")
+    if file then
+        file:write(y)
+        file:close()
+    else
+        error("Unable to open file for writing: " .. x)
+    end
+end
+
 --------------------------------------------------------------------------------
 
 function M.file_exists(path)
