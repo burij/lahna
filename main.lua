@@ -18,7 +18,7 @@ app.run(conf)
 
 -- Replaced Lua with LuaJit
 -- Added utils.write_file
--- TODO: Add utils.sanitize
--- TODO: Update to the new version of lua-light-wings
--- TODO: Remove need
+-- Added utils.sanitize for handling user input
+-- Update to the new version of lua-light-wings
+-- Removed need
 -- TODO: change README

@@ -1,5 +1,28 @@
 local M = {}
+--------------------------------------------------------------------------------
 
+function M.sanitize(user_input)
+    local x = is_string(user_input or "")
+    local result = x
+
+    if #result > 5120 then
+        result = result:sub(1, 5120)
+    end
+
+    result = result:gsub("\r\n", "\n"):gsub("\r", "\n")
+    result = result:gsub("^%s+", ""):gsub("%s+$", "")
+    result = result:gsub("\\", "\\\\")
+    result = result:gsub('"', '\\"')
+    result = result:gsub("'", "\\'")
+    result = result:gsub("\n", "\\n")
+    result = result:gsub("\t", "\\t")
+
+    if result == "" then
+        result = nil
+    end
+
+    return result
+end
 --------------------------------------------------------------------------------
 
 function M.write_file(filename, content)
