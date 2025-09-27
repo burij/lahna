@@ -57,6 +57,7 @@ The `modules/utils.lua` file provides handy utilities for:
 - Reading and writing files
 - Simple template processing (see `process_template`)
 - Path manipulation
+- Handling user input (sanitising) 
 
 > **Note:** If Pandoc is not installed, Markdown conversion will fail gracefully with a helpful error message.
 
@@ -202,13 +203,9 @@ So, the approach Lahna takes here is similar to Lua as a language itself. In con
 
 # Status and Roadmap
 
-Version 0.1 was created from a conceptual idea of how an application could work. To test core functionality, application logic and the [demo page](https://lahna.burij.de) were developed in parallel.
+In September 2026, the project entered its public beta phase following the development of a productive web application built on version 0.1 as its foundation. Throughout this development process, additional features were incorporated and minor upstream adjustments were implemented.
 
-The next step will be the development of a real web application, using Lahna as a starting template. In case missing tools are discovered along the way, they will be included in the Lahna repository.
-
-It is most likely that ./modules/utils.lua will become additional helping functions, but changes in the core server are also possible.
-
-After this process, around the end of 2026, beta version 0.9 is planned.
+The project is planned to remain in beta for at least two years. Currently, Lahna includes all the core tools necessary for building HTMX-based web applications, though many features remain to be implemented. These will be gradually added as needed prior to the 1.0 release. Feedback, suggestions, and contributions are highly welcomed during this stage.
 
 # Why Lahna? (Philosophy Recap)
 

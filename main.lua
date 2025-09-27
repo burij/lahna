@@ -7,18 +7,18 @@ local load_conf = loadfile(arg[1] or "./conf.lua")
 local succes, conf = pcall(load_conf)
 if not succes then conf = require "conf" end
 
-conf.version = "Lahna: Luaserver for HTMX on NixOS, Version 0.9-dev"
 conf.arguments = arg
-
-_G.debug_mode = conf.debug_mode or true
-_G.public_user_folder = conf.path
-
-if debug_mode then test.prestart(conf) end
-app.run(conf)
+conf.version = "Lahna: Luaserver for HTMX on NixOS, Version 0.9"
 
 -- Replaced Lua with LuaJit
 -- Added utils.write_file
 -- Added utils.sanitize for handling user input
 -- Update to the new version of lua-light-wings
 -- Removed need
--- TODO: change README
+-- Updated README
+
+_G.debug_mode = conf.debug_mode or true
+_G.public_user_folder = conf.path
+
+if debug_mode then test.prestart(conf) end
+app.run(conf)
