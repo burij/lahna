@@ -10,13 +10,6 @@ if not succes then conf = require "conf" end
 conf.arguments = arg
 conf.version = "Lahna: Luaserver for HTMX on NixOS, Version 0.9"
 
--- Replaced Lua with LuaJit
--- Added utils.write_file
--- Added utils.sanitize for handling user input
--- Update to the new version of lua-light-wings
--- Removed need
--- Updated README
-
 _G.debug_mode = conf.debug_mode or true
 _G.public_user_folder = conf.path
 

@@ -5,7 +5,7 @@ let
   pkgs = import nixpkgs { config = { }; overlays = [ ]; };
 
   appName = "lahna";
-  appVersion = "0.1";
+  appVersion = "0.9";
 
   luaEnv = pkgs.luajit.withPackages (ps: with ps; [
     luarocks
@@ -48,7 +48,7 @@ let
       owner = "burij";
       repo = appName;
       rev = appVersion;
-      sha256 = "sha256-Z2iJotdJSXS3lg+O8sazqvNpfbfCUxH7dmcV9VwTU5M=";
+      sha256 = "";
     };
 
     extraFile = pkgs.fetchurl {
