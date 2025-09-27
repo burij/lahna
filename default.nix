@@ -48,7 +48,7 @@ let
       owner = "burij";
       repo = appName;
       rev = appVersion;
-      sha256 = "";
+      sha256 = "sha256-un77btYtBtciIc761pBpoYhxGGPodIVlnAdr2x6duBo=";
     };
 
     extraFile = pkgs.fetchurl {
