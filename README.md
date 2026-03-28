@@ -203,9 +203,11 @@ So, the approach Lahna takes here is similar to Lua as a language itself. In con
 
 # Status and Roadmap
 
-In September 2026, the project entered its public beta phase following the development of a productive web application built on version 0.1 as its foundation. Throughout this development process, additional features were incorporated and minor upstream adjustments were implemented.
+In September 2025, the project entered its public beta phase following the development of a productive web application built on version 0.1 as its foundation. Throughout this development process, additional features were incorporated and minor upstream adjustments were implemented.
 
 The project is planned to remain in beta for at least two years. Currently, Lahna includes all the core tools necessary for building HTMX-based web applications, though many features remain to be implemented. These will be gradually added as needed prior to the 1.0 release. Feedback, suggestions, and contributions are highly welcomed during this stage.
+
+In March 2026 a complete [rewrite in Exlixir](https://elahna.burij.de) was done. It is slightly more complex and less stable version at the moment, but you can try it out, if you more familiar with elixir or need additional performance.
 
 # Why Lahna? (Philosophy Recap)
 

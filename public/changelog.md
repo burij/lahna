@@ -1,11 +1,12 @@
 ---
 ### Changelog
 
-### 1.0
+### 0.9.1
 - Depedency updates
 - Nix files refactored to work with default nix commands
 - Implemented changelog feature on the front end
 - TODO: Streamlined deployment by usage of NixOS containers
+- TODO: Updated README
 
 ### 0.9
 - Replaced Lua with LuaJit
