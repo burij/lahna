@@ -1,9 +1,10 @@
+---
 ### Changelog
 
 ### 1.0
 - Depedency updates
-- TODO: Nix files refactored to work with default nix commands
-- TODO: Implemented changelog feature on the front end
+- Nix files refactored to work with default nix commands
+- Implemented changelog feature on the front end
 - TODO: Streamlined deployment by usage of NixOS containers
 
 ### 0.9

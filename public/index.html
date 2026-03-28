@@ -27,7 +27,9 @@
         Lahna ///</a></h1>
 
     <small id="slogan">
-      / building understandable web</small><hr>
+      / building understandable web</small><br>
+    <small id="dynversion" hx-get="/api/version" hx-swap="innerHTML"
+      hx-trigger="load">/ Version loading...</small><hr>
 
     <div class="content" id="content"><p>
       Imagine you need or want to create a simple, but dynamic web application

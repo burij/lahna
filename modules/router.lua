@@ -30,6 +30,12 @@ function M.get(path, headers)
         status = "200"
     end
 
+    if x:match( "^/api/version/?$" ) then
+        headers:upsert("content-type", "text/html")
+        result = M.get_version()
+        status = "200"
+    end
+
     return result, status
 end
 
@@ -110,6 +116,21 @@ function M.get_md(path)
     local result = utils.md_to_html(markdown) or markdown
     return is_string(result)
 end
+
+--------------------------------------------------------------------------------
+
+function M.get_version()
+    local utils = require "modules.utils"
+    local htmx = [[
+        <small id="version" hx-get="/md/changelog" hx-target="#version">
+          <a href="">/ Version $VERSION </a></small><br>
+        ]]
+    local version = utils.read_file("./VERSION")
+    local result = utils.replace(htmx, "$VERSION", version)
+    return is_string(result)
+end
+
+
 
 --------------------------------------------------------------------------------
 
