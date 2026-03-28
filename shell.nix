@@ -1,7 +1,7 @@
 let
-  pkgs = import <nixpkgs> { };
+  pkgs = import <nixpkgs> {};
   lib = import ./lib.nix { inherit pkgs; };
 in
 
-lib.package
+lib.shell
 
