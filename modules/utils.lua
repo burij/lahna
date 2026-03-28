@@ -111,15 +111,15 @@ end
 function M.read_file(path)
     -- returns content of given file
     local x = is_string(path)
-    local file = io.open(path, "r")
+    local file = io.open(x, "r")
+    local content
     if file then
         content = file:read("*all")
         file:close()
     else
-        content = filename .. " not found or not readable!"
+        content = x .. " not found or not readable!"
     end
-    local str = content
-    return str
+    return content
 end
 
 --------------------------------------------------------------------------------

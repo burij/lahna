@@ -5,8 +5,9 @@
 
 let
   lib = pkgs.lib;
-  appName = "lahna";
+  appName = "lahnaNew";
   appVersion = lib.strings.fileContents ./VERSION;
+  appPort = 8152;
 
   luaEnv = pkgs.luajit.withPackages (ps: with ps; [
     luarocks
@@ -87,6 +88,65 @@ let
     };
   };
 
-  container = "";
+  container = { config, lib, pkgs, ... }: {
+    containers.${appName} = {
+      autoStart = true;
+      privateNetwork = false;
+      privateUsers = "no";
+      hostAddress = "10.0.0.1";
+      localAddress = "10.0.0.2";
+
+      forwardPorts = [
+        {
+          hostPort = appPort;
+          containerPort = 8000;
+        }
+      ];
+
+      bindMounts = {
+        "${appName}-content" = {
+          hostPath = "/home/burij/Projekte/2521_Lahna/public";
+          mountPoint = "/var/lib/${appName}/public";
+          isReadOnly = false;
+        };
+      };
+
+      config = { config, pkgs, ... }: {
+        system.stateVersion = "25.11";
+
+        environment.systemPackages = with pkgs; [
+          package
+        ];
+
+        systemd.services."${appName}" = {
+          description = "${appName}-daemon";
+          after = [ "network.target" ];
+          environment = {
+            LAHNA_HOST = "0.0.0.0";
+            LAHNA_PORT = "${toString appPort}";
+          };
+          serviceConfig = {
+            Type = "simple";
+            ExecStart = "${package}/bin/${appName} /var/lib/${appName}/conf.lua";
+            Restart = "always";
+            RestartSec = 10;
+            StandardOutput = "journal";
+            StandardError = "journal";
+            WorkingDirectory = "/var/lib/${appName}";
+          };
+          wantedBy = [ "multi-user.target" ];
+        };
+
+        users.users.${appName} = {
+          isSystemUser = true;
+          group = appName;
+        };
+        users.groups.${appName} = { };
+
+        networking.firewall.allowedTCPPorts = [ appPort ];
+      };
+    };
+  };
+
 in
 { shell = shell; package = package; container = container; }
