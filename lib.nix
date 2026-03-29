@@ -98,12 +98,12 @@ let
 
       bindMounts = {
         "${appName}-public" = {
-          hostPath = "/srv/config/${appName}/upstream/public";
+          hostPath = "/srv/config/${appName}/public";
           mountPoint = "/var/lib/${appName}/public";
           isReadOnly = false;
         };
         "${appName}-conf" = {
-          hostPath = "/srv/config/${appName}/upstream/conf.lua";
+          hostPath = "/srv/config/${appName}/conf.lua";
           mountPoint = "/var/lib/${appName}/conf.lua";
           isReadOnly = false;
         };
