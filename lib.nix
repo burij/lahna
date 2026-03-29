@@ -5,7 +5,7 @@
 
 let
   lib = pkgs.lib;
-  appName = "lahnaNew";
+  appName = "lahna";
   appVersion = lib.strings.fileContents ./VERSION;
   appPort = 8152;
 
@@ -96,17 +96,15 @@ let
       hostAddress = "10.0.0.1";
       localAddress = "10.0.0.2";
 
-      forwardPorts = [
-        {
-          hostPort = appPort;
-          containerPort = 8000;
-        }
-      ];
-
       bindMounts = {
-        "${appName}-content" = {
-          hostPath = "/home/burij/Projekte/2521_Lahna/public";
+        "${appName}-public" = {
+          hostPath = "/srv/config/${appName}/upstream/public";
           mountPoint = "/var/lib/${appName}/public";
+          isReadOnly = false;
+        };
+        "${appName}-conf" = {
+          hostPath = "/srv/config/${appName}/upstream/conf.lua";
+          mountPoint = "/var/lib/${appName}/conf.lua";
           isReadOnly = false;
         };
       };
@@ -132,7 +130,7 @@ let
             RestartSec = 10;
             StandardOutput = "journal";
             StandardError = "journal";
-            WorkingDirectory = "/var/lib/${appName}";
+            WorkingDirectory = "${package}/lib/${appName}";
           };
           wantedBy = [ "multi-user.target" ];
         };
