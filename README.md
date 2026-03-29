@@ -17,7 +17,7 @@ Consider Lahna particularly for the following use cases:
 Clone the repository and spin up the development environment:
 
 ```
-git clone https://github.com/burij/lahna.git && cd lahna && nix-shell -A
+git clone https://github.com/burij/lahna.git && cd lahna && nix-shell
 ```
 
 Start up the webserver:
@@ -27,6 +27,25 @@ run
 ```
 
 Visit [localhost:8000](http://localhost:8000)
+
+### NixOS Container Deployment
+
+To deploy Lahna as a NixOS container:
+
+1. Import the container definition in your `configuration.nix`:
+```nix
+imports = [
+  (import /path/to/lahna/container.nix)
+];
+```
+
+2. Rebuild your system:
+
+```nix-rebuild switch
+```
+
+The container will automatically start and be accessible on the configured port (default: 8152).
+
 
 ## Common Linux
 1. Install system dependencies:
@@ -51,6 +70,7 @@ Lahna comes with a set of language extensions and functional helpers (from `lua-
 # Utility Functions
 
 The `modules/utils.lua` file provides handy utilities for:
+
 - Checking if files exist
 - Converting Markdown to HTML (requires Pandoc)
 - Parsing form data from POST requests
@@ -63,13 +83,20 @@ The `modules/utils.lua` file provides handy utilities for:
 
 # Configuration Options
 
-Lahna’s configuration (see `conf.lua`) supports:
+Lahna's configuration (see `conf.lua`) supports:
+
 - `port`: Port to run the server on (default: 8000)
 - `host`: Host address (default: "localhost"; use "0.0.0.0" to share on your network)
 - `path`: Path to your public/static files (default: `./public/`)
 - `debug_mode`: Enables extra logging and developer features (default: `true`)
 
 You can pass a custom config file as the first argument to `main.lua` or the `run` command.
+
+## Environment Variables
+
+When deploying via NixOS container, settings can be passed as environment variables:
+- `LAHNA_PORT`: Override port (default: 8000)
+- `LAHNA_HOST`: Override host (default: "localhost")
 
 # Endpoints Overview
 
@@ -83,6 +110,7 @@ Lahna comes with several built-in endpoints:
 | GET    | `/xml/<name>`       | Serves `<name>.xml` from the public folder       |
 | GET    | `/md/<name>`        | Renders `<name>.md` as HTML (Markdown to HTML)   |
 | POST   | `/api/countletters` | Returns a template with the count of letters in a submitted string |
+| POST   | `/api/version`      | Returns version number |
 
 > **Tip:** You can add your own endpoints by editing `modules/router.lua`.
 
@@ -105,21 +133,25 @@ Lahna is designed to be a starting point for your own Lua web projects. Here’s
 # Project structure
 Lahna brings a starter definition for a complete, but fairly minimal web stack in a single folder: Nix (development environment and package build definition) → Lua (configuration, app logic, static file server, API definition) → HTML (front end) → Markdown (content).
 
-## default.nix
-This is not the usual way things are done in NixOS, but this file contains both the definition of the environment and the build script for the deployment package.
-This is an easy way to synchronize dependency definitions between both. The downside is that the usual ```nix-shell``` doesn't work.
+## lib.nix
+Contains the development shell, package derivation, and container definition.
 
-You'll need to invoke the environment with ```nix-shell -A shell```.
+To start the development shell:
+```nix-shell```
 
-To build the package, use ```nix-build -A package```. Inside the environment, simply use ```build``` (an alias). Be aware of the src definition. By default, the derivation is made from the latest release of this repository, not your modified version. To build your modified project, the src needs to be modified.
+To build the package:
+```nix-build```
 
-```make "commit tag"```
+## container.nix
+Import this into your NixOS configuration to deploy Lahna as a container:
 
-can be used to commit changes to git and run a test build.
+```nix
+imports = [
+  /path/to/lahna/container.nix
+];
+```
 
-```lahna```
-
-starts the server from the built package instead of the source code version.
+The container mounts `./public/` and `./conf.lua` from the host, allowing you to customize content while keeping the back-end in the read-only nix store.
 
 ## main.lua
 
@@ -170,10 +202,9 @@ conf.host = "localhost"
 conf.path = "./public/"
 ```
 
-This is a typical configuration file; all additional user settings can be declared here and passed through the application. This also makes sense because a path to a custom configuration can be passed as the first argument to main.lua:
-```lua main.lua '/home/to/other/config/'``` 
-or in the environment:
-```run '/home/to/other/config/'```
+Settings can be overridden via environment variables when deployed in a container:
+- `LAHNA_PORT`
+- `LAHNA_HOST`
 
 This design makes it possible to run multiple front-ends via a single back-end or run the back-end in a read-only location (like nix-store) by maintaining the frontend and content as editable.
 

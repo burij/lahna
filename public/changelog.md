@@ -5,8 +5,8 @@
 - Depedency updates
 - Nix files refactored to work with default nix commands
 - Implemented changelog feature on the front end
-- TODO: Streamlined deployment by usage of NixOS containers
-- TODO: Updated README
+- Streamlined deployment by usage of NixOS containers
+- Updated README
 
 ### 0.9
 - Replaced Lua with LuaJit
