@@ -1,5 +1,8 @@
 ---
 ### Changelog
+### 0.9.2
+- Upgrade Nixpkgs-Version
+- Fixed nested list in BuiltInputs, which soon will be abondonded
 
 ### 0.9.1
 - Depedency updates

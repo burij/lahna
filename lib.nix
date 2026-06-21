@@ -27,7 +27,7 @@ let
   };
 
   shell = pkgs.mkShell {
-    buildInputs = [ luaEnv dependencies ];
+    buildInputs = [ luaEnv ] ++ dependencies;
     shellHook = ''
       # export LUAOS="./conf.lua"
       alias run='lua main.lua'
@@ -56,7 +56,7 @@ let
     extraFile = pkgs.fetchurl luaLightWings;
 
     nativeBuildInputs = [ pkgs.makeWrapper ];
-    buildInputs = [ luaEnv dependencies ];
+    buildInputs = [ luaEnv ] ++ dependencies;
 
     installPhase = ''
       mkdir -p $out/bin
