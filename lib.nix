@@ -1,5 +1,5 @@
 { pkgs ? import
-    (fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-25.11")
+    (fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-26.05")
     { config = { }; overlays = [ ]; }
 }:
 
